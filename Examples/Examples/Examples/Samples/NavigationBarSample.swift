@@ -23,7 +23,6 @@ struct FoodList: View {
 
 struct FoodDetail: View {
     var food: Food
-    @State private var isNavigationBarHidden = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -32,7 +31,6 @@ struct FoodDetail: View {
                     Text(food.icon).font(.system(size: 80))
                     Text(food.name).font(.title)
                     
-                    // Add some content to demonstrate scrolling
                     ForEach(0..<20) { index in
                         Text("Content \(index + 1)")
                             .frame(maxWidth: .infinity)
@@ -45,7 +43,7 @@ struct FoodDetail: View {
                 .padding(.top, geometry.safeAreaInsets.top + 16)
                 .padding([.horizontal, .bottom])
             }
-            .edgesIgnoringSafeArea(.all)
+            .edgesIgnoringSafeArea(.all) // important
             
             // Debug view to show insets
             Color.clear
