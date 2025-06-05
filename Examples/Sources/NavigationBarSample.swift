@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftUIKit
 
 struct FoodList: View {
     let foods = Food.preview()
@@ -6,7 +7,9 @@ struct FoodList: View {
     var body: some View {
         NavigationStack {
             List(foods, id: \.name) { food in
-                NavigationLink(destination: FoodDetail(food: food)) {
+                NavigationLink {
+                    FoodDetail(food: food)
+                } label: {
                     HStack {
                         Text(food.icon)
                         Text(food.name)
@@ -43,15 +46,6 @@ struct FoodDetail: View {
                 .padding([.horizontal, .bottom])
             }
             .edgesIgnoringSafeArea(.all)
-            .onAppear {
-                // Hide navigation bar when view appears
-                isNavigationBarHidden = true
-            }
-            .onDisappear {
-                // Show navigation bar when view disappears
-                isNavigationBarHidden = false
-            }
-            .navigationBarHidden(isNavigationBarHidden)
             
             // Debug view to show insets
             Color.clear
