@@ -1,6 +1,6 @@
 //
-//  SwiftUIKitApp.swift
-//  SwiftUIKit
+//  ExamplesApp.swift
+//  Examples
 //
 //  Created by Lasha Efremidze on 6/4/25.
 //
@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftUIKit
 
 @main
-struct SwiftUIKitApp: App {
+struct ExamplesApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -43,4 +43,4 @@ struct ContentView: View {
             .navigationTitle("SwiftUIKit Demo")
         }
     }
-} 
+}
