@@ -19,9 +19,32 @@ struct ExamplesApp: App {
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 20) {
+        NavigationStack {
+            List {
+                Section("Components") {
+                    NavigationLink {
+                        FoodList()
+                    } label: {
+                        HStack {
+                            Image(systemName: "list.bullet")
+                                .foregroundColor(.blue)
+                            Text("Food List")
+                        }
+                    }
+                    
+                    NavigationLink {
+                        Text("Coming Soon")
+                            .navigationTitle("More Components")
+                    } label: {
+                        HStack {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.blue)
+                            Text("More Components")
+                        }
+                    }
+                }
+                
+                Section("Examples") {
                     InfoCard(
                         title: "Welcome to SwiftUIKit",
                         description: "A collection of beautiful and reusable SwiftUI components.",
@@ -38,9 +61,12 @@ struct ContentView: View {
                         .cornerRadius(10)
                         .customShadow(radius: 4)
                 }
-                .padding()
             }
             .navigationTitle("SwiftUIKit Demo")
         }
     }
+}
+
+#Preview {
+    ContentView()
 }

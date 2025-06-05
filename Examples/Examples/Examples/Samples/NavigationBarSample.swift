@@ -5,19 +5,19 @@ struct FoodList: View {
     let foods = Food.preview()
 
     var body: some View {
-        NavigationStack {
-            List(foods, id: \.name) { food in
-                NavigationLink {
-                    FoodDetail(food: food)
-                } label: {
-                    HStack {
-                        Text(food.icon)
-                        Text(food.name)
-                    }
+        List(foods, id: \.name) { food in
+            NavigationLink {
+                FoodDetail(food: food)
+//                    .navigationBarHidden(true)
+//                    .toolbar(.hidden, for: .navigationBar)
+            } label: {
+                HStack {
+                    Text(food.icon)
+                    Text(food.name)
                 }
             }
-            .navigationTitle("Foods")
         }
+        .navigationTitle("Foods")
     }
 }
 
@@ -44,14 +44,6 @@ struct FoodDetail: View {
                 .padding([.horizontal, .bottom])
             }
             .edgesIgnoringSafeArea(.all) // important
-            
-            // Debug view to show insets
-            Color.clear
-                .onAppear {
-                    DispatchQueue.main.async {
-                        print("Top inset: \(geometry.safeAreaInsets.top)")
-                    }
-                }
         }
         .navigationTitle(food.name)
     }
@@ -75,5 +67,7 @@ struct Food {
 }
 
 #Preview {
-    FoodList()
-} 
+    NavigationStack {
+        FoodList()
+    }
+}
