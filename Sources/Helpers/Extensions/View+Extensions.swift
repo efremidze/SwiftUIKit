@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Styling
 public extension View {
     func cardStyle() -> some View {
         self
@@ -18,4 +19,12 @@ public extension View {
             .background(Color.blue)
             .cornerRadius(10)
     }
-} 
+}
+
+// Modifiers
+public extension View {
+    func inspect(_ closure: (Self) -> Void) -> Self {
+        closure(self)
+        return self
+    }
+}
